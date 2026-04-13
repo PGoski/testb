@@ -1,8 +1,14 @@
+---
+name: clawbrowser
+description: Clawbrowser fingerprint-managed browser integration — launch browser profiles, connect via CDP, and manage proxies
+type: skill
+---
+
 # Clawbrowser.ai — AI Agent Integration Guide
 
 ## Overview
 
-Clawbrowser.ai is an anti-detect browser that provides managed fingerprint identities and proxy routing. AI agents connect via standard CDP (Chrome DevTools Protocol) using Playwright or Puppeteer. All fingerprint spoofing and proxy routing is transparent — agents interact with a normal browser.
+Clawbrowser.ai is a fingerprint-managed browser that provides unique browser identities and proxy routing. AI agents connect via standard CDP (Chrome DevTools Protocol) using Playwright or Puppeteer. All fingerprint spoofing and proxy routing is transparent — agents interact with a normal browser.
 
 ## Quick Start
 
