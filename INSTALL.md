@@ -11,8 +11,9 @@ Download the correct binary for your platform from the [v1.0.0 release](https://
 | macOS ARM64 | `cb-macos-arm64.tar.gz` |
 
 ```bash
-OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+OS=$(uname -s)
 ARCH=$(uname -m)
+case "$OS" in Linux) OS="linux";; Darwin) OS="macos";; esac
 case "$ARCH" in x86_64) ARCH="x64";; aarch64|arm64) ARCH="arm64";; esac
 
 curl -L -o clawbrowser.tar.gz \
@@ -21,12 +22,14 @@ curl -L -o clawbrowser.tar.gz \
 
 ## Step 2: Extract
 
-Extract the archive into your workspace directory:
+Extract the archive into the current directory:
 
 ```bash
-tar xzf clawbrowser.tar.gz -C /workspace
+tar xzf clawbrowser.tar.gz
 rm clawbrowser.tar.gz
 ```
+
+On macOS this will produce a `Chromium.app` bundle. On Linux this will produce a `clawbrowser` binary.
 
 ## Step 3: Install the Clawbrowser Skill
 
@@ -43,41 +46,39 @@ Then install the skill in your agent's configuration so it can be used alongside
 
 > **Human action required.** This step may need manual intervention — the agent cannot complete it autonomously. Ask the user to run the command and confirm the result.
 
-Run:
+### macOS
+
+```bash
+./Chromium.app/Contents/MacOS/Chromium --version
+```
+
+If blocked by Gatekeeper (*"cannot be opened because it is from an unidentified developer"*), ask the user to do one of the following:
+
+**Option A — System Settings (requires user interaction):**
+
+1. Open **System Settings > Privacy & Security**.
+2. Scroll to the **Security** section — there will be a message about `Chromium` being blocked.
+3. Click **Allow Anyway**.
+4. Re-run the version command and confirm the prompt.
+
+**Option B — Remove quarantine attribute:**
+
+```bash
+xattr -rd com.apple.quarantine Chromium.app
+```
+
+Then re-run the version command.
+
+### Linux
 
 ```bash
 ./clawbrowser --version
 ```
 
-If the version prints successfully, skip ahead to Step 5.
-
-### macOS — Gatekeeper block
-
-The first launch will likely be blocked by Gatekeeper with a dialog: *"clawbrowser cannot be opened because it is from an unidentified developer."*
-
-Ask the user to do one of the following:
-
-**Option A — System Settings (requires user interaction):**
-
-1. Open **System Settings > Privacy & Security**.
-2. Scroll to the **Security** section — there will be a message about `clawbrowser` being blocked.
-3. Click **Allow Anyway**.
-4. Run `./clawbrowser --version` again and confirm the prompt.
-
-**Option B — Remove quarantine attribute:**
+If permission denied, run:
 
 ```bash
-xattr -d com.apple.quarantine /workspace/clawbrowser
-```
-
-Then re-run `./clawbrowser --version`.
-
-### Linux — Permission denied
-
-If the binary is not executable after extraction, ask the user to run:
-
-```bash
-chmod +x /workspace/clawbrowser
+chmod +x ./clawbrowser
 ```
 
 Then re-run `./clawbrowser --version`.
@@ -90,17 +91,28 @@ After the user confirms a successful version output, proceed to Step 5.
 
 The API key is **required**. All operations that contact the Clawbrowser backend (fingerprint generation, proxy assignment, profile creation) will fail without it.
 
-Get your key at [clawbrowser.ai/dashboard](https://clawbrowser.ai/dashboard), then configure it:
+Ask the user in chat for their Clawbrowser API key. They can get it at [clawbrowser.ai/dashboard](https://clawbrowser.ai/dashboard).
+
+Once the user provides the key, write the config file directly:
 
 ```bash
-./clawbrowser config set api_key <your_api_key>
+mkdir -p ~/.clawbrowser
+cat > ~/.clawbrowser/config <<EOF
+{
+  "api_key": "<user_provided_api_key>"
+}
+EOF
 ```
 
-The key is stored in `~/.clawbrowser/config` and used for all subsequent commands.
+> **Do NOT run the browser binary to set the API key.** Write the config file directly as shown above.
 
 ## Step 6: Verify installation
 
 ```bash
+# macOS
+./Chromium.app/Contents/MacOS/Chromium --fingerprint=test_profile --remote-debugging-port=9222 --output=json
+
+# Linux
 ./clawbrowser --fingerprint=test_profile --remote-debugging-port=9222 --output=json
 ```
 
