@@ -1,24 +1,29 @@
 # Clawbrowser Installation
 
-## Step 1: Download
+## Step 1: Detect platform and download
 
-Download the correct binary for your platform from the [v1.0.0 release](https://github.com/PGoski/testb/releases/tag/v1.0.0):
+> **Agent: do NOT ask the user which platform they are on.** Run the script below — it auto-detects the OS and architecture.
 
-| Platform    | Asset                    |
-|-------------|--------------------------|
-| Linux x64   | `cb-linux-x64.tar.gz`   |
-| Linux ARM64 | `cb-linux-arm64.tar.gz` |
-| macOS ARM64 | `cb-macos-arm64.tar.gz` |
+Run this single script to detect the platform and download the correct binary:
 
 ```bash
 OS=$(uname -s)
 ARCH=$(uname -m)
 case "$OS" in Linux) OS="linux";; Darwin) OS="macos";; esac
 case "$ARCH" in x86_64) ARCH="x64";; aarch64|arm64) ARCH="arm64";; esac
+echo "Detected platform: ${OS}-${ARCH}"
 
 curl -L -o clawbrowser.tar.gz \
   "https://github.com/PGoski/testb/releases/download/v1.0.0/cb-${OS}-${ARCH}.tar.gz"
 ```
+
+Available assets on the [v1.0.0 release](https://github.com/PGoski/testb/releases/tag/v1.0.0):
+
+| Platform    | Asset                    |
+|-------------|--------------------------|
+| Linux x64   | `cb-linux-x64.tar.gz`   |
+| Linux ARM64 | `cb-linux-arm64.tar.gz` |
+| macOS ARM64 | `cb-macos-arm64.tar.gz` |
 
 ## Step 2: Extract
 
