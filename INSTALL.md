@@ -38,7 +38,7 @@ rm clawbrowser.tar.gz
 
 On macOS this will produce a `Chromium.app` bundle. On Linux this will produce a `clawbrowser` binary.
 
-## Step 3: Install the Clawbrowser Skill
+## Step 3: Clawbrowser Skill
 
 Download the [SKILL.md](https://github.com/PGoski/testb/blob/main/SKILL.md) file and install it as a skill for your agent. This skill provides the agent with full usage instructions and CLI reference for Clawbrowser.
 
