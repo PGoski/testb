@@ -1,5 +1,7 @@
 # Clawbrowser Installation
 
+> **Agent: do NOT use a browser to fetch URLs in this guide. Use `curl` in the terminal for all downloads.**
+
 ## Step 1: Detect platform and download
 
 > **Agent: do NOT ask the user which platform they are on.** Run the script below — it auto-detects the OS and architecture.
