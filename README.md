@@ -11,7 +11,12 @@ Fingerprint-managed browser for AI agents. Unique browser identities, proxy rout
 
 ## Install
 
-Paste this into your AI agent chat:
+```
+/plugin install github.com/PGoski/testb        # Claude Code
+hermes install github.com/PGoski/testb         # Hermes
+```
+
+Or paste this into your AI agent chat:
 
 ```
 Check file and install https://raw.githubusercontent.com/PGoski/testb/refs/heads/main/INSTALL.md
