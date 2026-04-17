@@ -55,11 +55,9 @@ def register(ctx):
 
     ctx.register_hook("pre_llm_call", _clawbrowser_context)
 
-    # Register bundled skill
-    skills_dir = Path(__file__).parent / "skills"
-    for child in sorted(skills_dir.iterdir()):
-        skill_md = child / "SKILL.md"
-        if child.is_dir() and skill_md.exists():
-            ctx.register_skill(child.name, skill_md)
+    # Register shared skill from repo root
+    skill_md = Path(__file__).resolve().parent.parent / "SKILL.md"
+    if skill_md.exists():
+        ctx.register_skill("clawbrowser", skill_md)
 
     logger.info("Clawbrowser plugin registered")
