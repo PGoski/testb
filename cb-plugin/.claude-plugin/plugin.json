@@ -1,0 +1,11 @@
+{
+  "name": "clawbrowser",
+  "version": "1.0.0",
+  "description": "Clawbrowser fingerprint-managed browser integration — launch browser profiles, connect via CDP, and manage proxies for AI agent automation",
+  "author": {
+    "name": "Clawbrowser",
+    "email": "support@clawbrowser.ai"
+  },
+  "homepage": "https://clawbrowser.ai",
+  "keywords": ["browser", "fingerprint", "cdp", "automation", "playwright", "puppeteer"]
+}
