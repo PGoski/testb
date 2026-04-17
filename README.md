@@ -12,9 +12,8 @@ Fingerprint-managed browser for AI agents. Unique browser identities, proxy rout
 ## Install
 
 ```
-/plugin marketplace add PGoski/testb            # Claude Code (step 1)
-/plugin install clawbrowser@clawbrowser         # Claude Code (step 2)
-hermes install github.com/PGoski/testb          # Hermes
+/plugin install github.com/PGoski/testb        # Claude Code
+hermes install github.com/PGoski/testb         # Hermes
 ```
 
 Or paste this into your AI agent chat:
@@ -29,12 +28,8 @@ Check file and install https://raw.githubusercontent.com/PGoski/testb/refs/heads
 ├── SKILL.md                     # Shared skill — full CLI reference & usage guide
 ├── INSTALL.md                   # Installation instructions
 ├── README.md
-├── .claude-plugin/              # Claude Code marketplace
-│   └── marketplace.json
-├── plugins/
-│   └── clawbrowser/
-│       └── .claude-plugin/
-│           └── plugin.json      # References ../../SKILL.md
+├── .claude-plugin/              # Claude Code integration
+│   └── plugin.json
 └── .hermes-plugin/              # Hermes Agent integration
     ├── plugin.yaml
     ├── __init__.py

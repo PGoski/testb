@@ -2,7 +2,7 @@
   "name": "clawbrowser",
   "version": "1.0.0",
   "description": "Clawbrowser fingerprint-managed browser — launch profiles, connect via CDP, and manage proxies",
-  "entry": "../../../SKILL.md",
+  "entry": "../SKILL.md",
   "author": {
     "name": "Clawbrowser",
     "email": "support@clawbrowser.ai"
