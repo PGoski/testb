@@ -29,19 +29,10 @@ Check file and install https://raw.githubusercontent.com/PGoski/testb/refs/heads
 ├── INSTALL.md                   # Installation instructions
 ├── README.md
 ├── .claude-plugin/              # Claude Code integration
-│   ├── plugin.json
-│   └── commands/
-│       ├── launch.md
-│       ├── list-profiles.md
-│       ├── connect.md
-│       └── regenerate.md
-├── .hermes-plugin/              # Hermes Agent integration
-│   ├── plugin.yaml
-│   ├── __init__.py
-│   ├── schemas.py
-│   ├── tools.py
-│   └── skills/
-│       └── clawbrowser/
-│           └── SKILL.md
-└── cb/                          # Pre-built binaries
+│   └── plugin.json
+└── .hermes-plugin/              # Hermes Agent integration
+    ├── plugin.yaml
+    ├── __init__.py
+    ├── schemas.py
+    └── tools.py
 ```
