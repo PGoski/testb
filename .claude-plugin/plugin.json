@@ -1,7 +1,8 @@
 {
   "name": "clawbrowser",
   "version": "1.0.0",
-  "description": "Clawbrowser fingerprint-managed browser integration — launch browser profiles, connect via CDP, and manage proxies for AI agent automation",
+  "description": "Clawbrowser fingerprint-managed browser — launch profiles, connect via CDP, and manage proxies",
+  "entry": "./SKILL.md",
   "author": {
     "name": "Clawbrowser",
     "email": "support@clawbrowser.ai"

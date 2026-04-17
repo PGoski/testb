@@ -1,0 +1,15 @@
+name: clawbrowser
+version: 1.0.0
+description: Clawbrowser fingerprint-managed browser — launch profiles, connect via CDP, and manage proxies
+provides_tools:
+  - clawbrowser_launch
+  - clawbrowser_list_profiles
+  - clawbrowser_connect_info
+  - clawbrowser_regenerate
+provides_hooks:
+  - pre_llm_call
+requires_env:
+  - name: CLAWBROWSER_API_KEY
+    description: "API key for Clawbrowser fingerprint service"
+    url: "https://clawbrowser.ai/dashboard"
+    secret: true
